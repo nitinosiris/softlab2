@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance AI Assistant - Wireframes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F8FAFC;
+            line-height: 1.6;
+        }
+        
+        .wireframe-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .screen {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        /* Header Component */
+        .header {
+            background: white;
+            border-bottom: 1px solid #D1D5DB;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1F2937;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-item {
+            color: #6B7280;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-item.active {
+            color: #2563EB;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #2563EB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Dashboard Layout */
+        .dashboard {
+            padding: 32px;
+        }
+        
+        .welcome-section {
+            margin-bottom: 32px;
+        }
+        
+        .welcome-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+        
+        .date {
+            color: #6B7280;
+        }
+        
+        /* Net Worth Card */
+        .net-worth-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .net-worth-title {
+            font-size: 16px;
+            color: #6B7280;
+            margin-bottom: 8px;
+        }
+        
+        .net-worth-amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1F2937;
+            margin-bottom: 4px;
+        }
+        
+        .net-worth-change {
+            color: #10B981;
+            font-weight: 500;
+        }
+        
+        .net-worth-breakdown {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        /* Dashboard Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 16px;
+        }
+        
+        .card-content {
+            color: #6B7280;
+        }
+        
+        .card-metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .metric-value {
+            color: #1F2937;
+            font-weight: 500;
+        }
+        
+        /* Goals Section */
+        .goals-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .goals-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .goals-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1F2937;
+        }
+        
+        .goal-item {
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .goal-name {
+            font-weight: 600;
+            color: #1F2937;
+        }
+        
+        .goal-status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-on-track {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        
+        .status-attention {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+        
+        .status-behind {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #E5E7EB;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        .progress-80 {
+            width: 80%;
+            background: #10B981;
+        }
+        
+        .progress-40 {
+            width: 40%;
+            background: #F59E0B;
+        }
+        
+        .progress-20 {
+            width: 20%;
+            background: #EF4444;
+        }
+        
+        .goal-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        /* Chat Interface */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            background: #F8FAFC;
+        }
+        
+        .chat-header {
+            background: white;
+            padding: 16px 24px;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1F2937;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 16px;
+            max-width: 70%;
+        }
+        
+        .message.user {
+            margin-left: auto;
+        }
+        
+        .message-bubble {
+            padding: 12px 16px;
+            border-radius: 16px;
+            word-wrap: break-word;
+        }
+        
+        .message.ai .message-bubble {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px 16px 16px 4px;
+        }
+        
+        .message.user .message-bubble {
+            background: #2563EB;
+            color: white;
+            border-radius: 16px 16px 4px 16px;
+        }
+        
+        .message-time {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-top: 4px;
+        }
+        
+        .chat-input {
+            background: white;
+            padding: 16px 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .input-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .chat-input-field {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #D1D5DB;
+            border-radius: 24px;
+            outline: none;
+        }
+        
+        .send-button {
+            background: #2563EB;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .quick-action {
+            background: #F3F4F6;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            color: #6B7280;
+            cursor: pointer;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #2563EB;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #F3F4F6;
+            color: #374151;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                display: none;
+            }
+            
+            .dashboard {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Dashboard Screen -->
+    <div class="wireframe-container">
+        <div class="screen">
+            <div class="header">
+                <div class="logo">
+                    🏦 FinanceAI
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-item active">Dashboard</a>
+                    <a href="#" class="nav-item">Goals</a>
+                    <a href="#" class="nav-item">Chat</a>
+                    <a href="#" class="nav-item">Insights</a>
+                </nav>
+                <div class="user-menu">
+                    <div class="avatar">JD</div>
+                </div>
+            </div>
+            
+            <div class="dashboard">
+                <div class="welcome-section">
+                    <div class="welcome-title">👋 Good morning, John!</div>
+                    <div class="date">📅 Dec 15, 2024</div>
+                </div>
+                
+                <div class="net-worth-card">
+                    <div class="net-worth-title">Net Worth</div>
+                    <div class="net-worth-amount">₹18,45,000</div>
+                    <div class="net-worth-change">↗️ +2.3% this month</div>
+                    <div class="net-worth-breakdown">
+                        <div>Assets: ₹22,15,000</div>
+                        <div>Liabilities: ₹3,70,000</div>
+                    </div>
+                </div>
+                
+                <div class="cards-grid">
+                    <div class="dashboard-card">
+                        <div class="card-title">Monthly Overview</div>
+                        <div class="card-content">
+                            <div class="card-metric">
+                                <span>Income:</span>
+                                <span class="metric-value">₹1,25,000</span>
+                            </div>
+                            <div class="card-metric">
+                                <span>Expenses:</span>
+                                <span class="metric-value">₹85,000</span>
+                            </div>
+                            <div class="card-metric">
+                                <span>Savings:</span>
+                                <span class="metric-value">₹40,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-title">Investment Performance</div>
+                        <div class="card-content">
+                            <div class="card-metric">
+                                <span>Portfolio:</span>
+                                <span class="metric-value">₹8.2L</span>
+                            </div>
+                            <div class="card-metric">
+                                <span>Returns:</span>
+                                <span class="metric-value" style="color: #10B981;">+12.5%</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary" style="margin-top: 8px;">📈 View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-title">Credit Score</div>
+                        <div class="card-content">
+                            <div style="text-align: center; margin-bottom: 12px;">
+                                <div style="font-size: 24px; font-weight: bold; color: #1F2937;">780</div>
+                                <div style="color: #10B981;">⭐ Good</div>
+                            </div>
+                            <a href="#" class="btn btn-secondary">View More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="goals-section">
+                    <div class="goals-header">
+                        <div class="goals-title">🎯 Your Goals</div>
+                        <a href="#" class="btn btn-primary">+ New Goal</a>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <div class="goal-name">🏠 Home Purchase (₹50L)</div>
+                            <div class="goal-status status-on-track">🟢 On Track</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-80"></div>
+                        </div>
+                        <div class="goal-details">
+                            <span>Progress: ₹40,00,000</span>
+                            <span>80% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <div class="goal-name">🎓 Kids Education (₹25L)</div>
+                            <div class="goal-status status-attention">🟡 Needs Attention</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-40"></div>
+                        </div>
+                        <div class="goal-details">
+                            <span>Progress: ₹10,00,000</span>
+                            <span>40% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <div class="goal-name">🏖️ Retirement (₹2Cr)</div>
+                            <div class="goal-status status-behind">🔴 Behind</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-20"></div>
+                        </div>
+                        <div class="goal-details">
+                            <span>Progress: ₹40,00,000</span>
+                            <span>20% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Interface Screen -->
+        <div class="screen">
+            <div class="header">
+                <div class="logo">
+                    🏦 FinanceAI
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-item">Dashboard</a>
+                    <a href="#" class="nav-item">Goals</a>
+                    <a href="#" class="nav-item active">Chat</a>
+                    <a href="#" class="nav-item">Insights</a>
+                </nav>
+                <div class="user-menu">
+                    <div class="avatar">JD</div>
+                </div>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-title">🤖 AI Financial Assistant</div>
+                    <button class="btn btn-secondary">Clear Chat</button>
+                </div>
+                
+                <div class="chat-messages">
+                    <div class="message ai">
+                        <div class="message-bubble">
+                            🤖 Hi John! I'm your AI financial assistant. Ask me anything about your finances, investments, or goals.
+                        </div>
+                        <div class="message-time">Today, 9:30 AM</div>
+                    </div>
+                    
+                    <div class="message user">
+                        <div class="message-bubble">
+                            How much did I spend on food last month?
+                        </div>
+                        <div class="message-time">Today, 9:32 AM</div>
+                    </div>
+                    
+                    <div class="message ai">
+                        <div class="message-bubble">
+                            You spent ₹18,500 on food in November, which is 15% more than your average. Here's the breakdown:<br><br>
+                            🍽️ Restaurants: ₹12,000 (65%)<br>
+                            🛒 Groceries: ₹4,500 (24%)<br>
+                            ☕ Cafes: ₹2,000 (11%)<br><br>
+                            💡 Tip: Consider cooking more at home to save ₹4-5K/month
+                        </div>
+                        <div class="message-time">Today, 9:32 AM</div>
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <div class="input-container">
+                        <input type="text" class="chat-input-field" placeholder="Ask me anything about your finances...">
+                        <button class="send-button">➤</button>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Monthly Expenses</button>
+                        <button class="quick-action">Investment Performance</button>
+                        <button class="quick-action">Debt Status</button>
+                        <button class="quick-action">Goals</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
